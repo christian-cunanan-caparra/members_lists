@@ -71,9 +71,9 @@ class _MyAppState extends State<MyApp> {
                               SizedBox(height: 10),
                               Row(
                                 children: [
-                                  ClipOval(child: Image.asset('images/ChristianCaparra.jpg', height: 50)),
+                                  ClipOval(child: Image.asset('images/mike.jpg', height: 50)),
                                   SizedBox(width: 10),
-                                  Text('Christian Caparra'),
+                                  Text('Michael De Ramos'),
                                 ],
                               ),
                             ],
