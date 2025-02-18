@@ -13,6 +13,7 @@ class GroupChatPage extends StatelessWidget {
 
 
   //aso this???
+  //di akosure sa design ko or sakto lang
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
