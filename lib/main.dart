@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
             // Search
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: CupertinoSearchTextField(placeholder: "Search Contacts", style: TextStyle(color: CupertinoColors.white)),
+              child: CupertinoSearchTextField(placeholder: "Ask Meta AI or Search", style: TextStyle(color: CupertinoColors.white)),
             ),
             SizedBox(height: 10),
 
