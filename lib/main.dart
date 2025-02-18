@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   runApp(CupertinoApp(
     debugShowCheckedModeBanner: false,
-    home: MyApp(),));
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -15,136 +16,107 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  TextEditingController _num1 = TextEditingController();
-  TextEditingController _num2 = TextEditingController();
-  String ans = "";
-
   @override
   Widget build(BuildContext context) {
-
-
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          middle: Text('Activity in DevOps'),
-          trailing: CupertinoButton(child: Icon(CupertinoIcons.info, size: 25,)
-              , onPressed: (){
-
-
-
-
-
-//
-                showCupertinoDialog(
-                  context: context,
-                  builder: (context) {
-                    return CupertinoAlertDialog(
-                      title: Text('Members'),
-                      content: Container(
-                        height: 200,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  ClipOval(child: Image.asset('images/ChristianCaparra.jpg', height: 50)),
-                                  SizedBox(width: 10),
-                                  Text('Christian Caparra'),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  ClipOval(child: Image.asset('images/JL.jpg', height: 50)),
-                                  SizedBox(width: 10),
-                                  Text('John Lloyd Guevarra'),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  ClipOval(child: Image.asset('images/ChristianCaparra.jpg', height: 50)),
-                                  SizedBox(width: 10),
-                                  Text('Christian Caparra'),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  ClipOval(child: Image.asset('images/mike.jpg', height: 50)),
-                                  SizedBox(width: 10),
-                                  Text('Michael De Ramos'),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+      navigationBar: CupertinoNavigationBar(
+        middle: Text('Activity in DevOps'),
+        trailing: CupertinoButton(
+          child: Icon(CupertinoIcons.info, size: 25),
+          onPressed: () {
+            showCupertinoDialog(
+              context: context,
+              builder: (context) {
+                return CupertinoAlertDialog(
+                  title: Text('Members'),
+                  content: Container(
+                    height: 200,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          _buildMemberRow('images/ChristianCaparra.jpg', 'Christian Caparra'),
+                          SizedBox(height: 10),
+                          _buildMemberRow('images/JL.jpg', 'John Lloyd Guevarra'),
+                          SizedBox(height: 10),
+                          _buildMemberRow('images/ChristianCaparra.jpg', 'Christian Caparra'),
+                          SizedBox(height: 10),
+                          _buildMemberRow('images/mike.jpg', 'Michael De Ramos'),
+                        ],
                       ),
-                      actions: [
-                        CupertinoButton(
-                          child: Text(
-                            'Close',
-                            style: TextStyle(color: CupertinoColors.destructiveRed),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    );
-                  },
+                    ),
+                  ),
+                  actions: [
+                    CupertinoButton(
+                      child: Text(
+                        'Close',
+                        style: TextStyle(color: CupertinoColors.destructiveRed),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
                 );
-
-
-              }),
-          leading: Icon(CupertinoIcons.chevron_back, size: 25,),
+              },
+            );
+          },
         ),
-
-
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-
-                SizedBox(height: 100,),
-                // Row(
-                //   children: [
-                //     Text('Calculator', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: CupertinoColors.systemBlue),),
-                //   ],
-                // ),
-                SizedBox(height: 40,),
-
-
-                CupertinoTextField(
-                  controller: _num1,
-
-                ),
-                SizedBox(height: 10,),
-                CupertinoTextField(
-                  controller: _num2,
-
-
-                ),
-
-
-                CupertinoButton(child: Text('Calculate'), onPressed: (){
-                  setState(() {
-                    double n1 = double.parse(_num1.text);
-                    double n2 = double.parse(_num2.text);
-                    double answer = n1 + n2;
-                    ans = answer.toString();
-                    print(ans);
-                  });
-                }),
-
-                Text("$ans"),
-
-//updateds
-
-              ],
-            ),
+      ),
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipOval(
+                    child: Image.asset(
+                      'images/JL.jpg',
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Name: John Lloyd Guevarra',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text('Email: johnlloydguevarra0405@gmail.com'),
+                        Text('Address: San Nicolas, San Luis, Pampanga'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  // Helper method to create a member row for the dialog
+  Widget _buildMemberRow(String imagePath, String name) {
+    return Row(
+      children: [
+        ClipOval(
+          child: Image.asset(
+            imagePath,
+            height: 50,
+            width: 50,
+            fit: BoxFit.cover,
+          ),
+        ),
+        SizedBox(width: 10),
+        Text(name),
+      ],
+    );
   }
 }
