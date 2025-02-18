@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   List<Map<String, String>> chats = [
     {"name": "Christian Caparra", "message": "caparrachristian47@gmail.com", "image": "images/ChristianCaparra.jpg"},
     {"name": "Christian Caparra", "message": "Sent Thursday", "image": "images/MariaClara.jpg"},
-    {"name": "Christian Caparra", "message": "Ewan", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Michael De Ramos", "message": "deramosmichael27@gmail.com", "image": "images/mike.jpg"},
     {"name": "Christian Caparra", "message": "Seen last week", "image": "images/ChristianCaparra.jpg"},
     {"name": "Christian Caparra", "message": "Sent", "image": "images/ChristianCaparra.jpg"},
     {"name": "Christian Caparra", "message": "Reacted to your message", "image": "images/ChristianCaparra.jpg"},
