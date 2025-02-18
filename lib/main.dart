@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     {"name": "Christian Caparra", "message": "Reacted to your message", "image": "images/ChristianCaparra.jpg"},
   ];
 
-  // Show chat information in a dialog
+  // Show chat information in a dialog pampadami
   void _showChatDialog(String name, String image, String message) {
     showCupertinoDialog(
       context: context,
