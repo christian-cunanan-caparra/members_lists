@@ -16,9 +16,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  TextEditingController _num1 = TextEditingController();
-  TextEditingController _num2 = TextEditingController();
-  String ans = "";
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,38 +105,6 @@ class _MyAppState extends State<MyApp> {
             child: Column(
               children: [
 
-                SizedBox(height: 100,),
-                // Row(
-                //   children: [
-                //     Text('Calculator', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: CupertinoColors.systemBlue),),
-                //   ],
-                // ),
-                SizedBox(height: 40,),
-
-
-                CupertinoTextField(
-                  controller: _num1,
-
-                ),
-                SizedBox(height: 10,),
-                CupertinoTextField(
-                  controller: _num2,
-
-
-                ),
-
-
-                CupertinoButton(child: Text('Calculate'), onPressed: (){
-                  setState(() {
-                    double n1 = double.parse(_num1.text);
-                    double n2 = double.parse(_num2.text);
-                    double answer = n1 + n2;
-                    ans = answer.toString();
-                    print(ans);
-                  });
-                }),
-
-                Text("$ans"),
 
 //updateds
 
