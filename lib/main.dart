@@ -238,11 +238,14 @@ class _MyAppState extends State<MyApp> {
     showCupertinoDialog(
       context: context,
       builder: (context) {
+        // Calculate the width based on the number of items
+        double dialogWidth = 50.0 * chats.length + 20.0; // 50 is the image width, 20 is padding space
+
         return CupertinoAlertDialog(
           title: Text('Members'),
           content: Container(
-            width: 300, // Adjust the width as needed
-            height: 100, // Adjust the height to fit one row of images
+            width: dialogWidth, // Dynamically set the width based on items
+            height: 80, // Adjust height to fit images properly
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal, // Scroll horizontally
               child: Row(
@@ -272,6 +275,9 @@ class _MyAppState extends State<MyApp> {
       },
     );
   }
+
+
+
 
 
 
