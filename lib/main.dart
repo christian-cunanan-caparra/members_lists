@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
 
 
             // Search
-            const Padding(
+            const
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: CupertinoSearchTextField(placeholder: "Ask Meta AI or Search", style: TextStyle(color: CupertinoColors.white)),
             ),
