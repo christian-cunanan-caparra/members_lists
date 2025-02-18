@@ -11,6 +11,8 @@ class GroupChatPage extends StatelessWidget {
     {"name": "Jhuniel Galang", "message": "Ay payag kayo non?", "image": "images/Jhuniel.jpg", "time": "12:37 PM"},
   ];
 
+
+  //aso this???
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
