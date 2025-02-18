@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                           'Name: John Lloyd Guevarra',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text('Email: johnlloydguevarra0405@gmail.coms'),
+                        Text('Email: johnlloydguevarra0405@gmail.com'),
                         Text('Address: San Nicolas, San Luis, Pampanga'),
                       ],
                     ),
