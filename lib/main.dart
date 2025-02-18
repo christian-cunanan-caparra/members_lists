@@ -97,7 +97,7 @@ class _MyAppState extends State<MyApp> {
 
 
               }),
-          leading: Icon(CupertinoIcons.chevron_back, size: 25,),
+
         ),
 
 
