@@ -1,264 +1,299 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'GroupChatPage.dart';
+import 'InformationPage.dart';
 
 void main() {
-  runApp(CupertinoApp(
+  runApp(const CupertinoApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
-// ano bagoaaa
-class MyApp extends StatefulWidget {
+
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  List<Map<String, String>> chats = [
-    {"name": "Christian Caparra", "message": "caparrachristian47@gmail.com", "image": "images/ChristianCaparra.jpg"},
-    {"name": "Christian Caparra", "message": "Sent Thursday", "image": "images/MariaClara.jpg"},
-    {"name": "Michael De Ramos", "message": "deramosmichael27@gmail.com", "image": "images/mike.jpg"},
-    {"name": "John Lloyd Guevarra", "message": "johnlloydguevarra0405@gmail.com", "image": "images/JL.jpg"},
-    {"name": "Jhuniel Galang", "message": "Sent", "image": "images/Jhuniel.jpg"}, // tapos ko na ung image
-    {"name": "Christian Caparra", "message": "Reacted to your message", "image": "images/ChristianCaparra.jpg"},
-  ];
-
-  // Show chat information in a dialog pampadami
-  void _showChatDialog(String name, String image, String message) {
-    showCupertinoDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: Text('$name\'s Information'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ClipOval(
-                child: Image.asset(
-                  image,
-                  height: 60,
-                  width: 60,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: 10),
-              Text(name, style: TextStyle(fontWeight: FontWeight.bold, color: CupertinoColors.white)),
-              SizedBox(height: 10),
-              Text(message, style: TextStyle(color: CupertinoColors.systemGrey)),
-            ],
-          ),
-          actions: [
-            CupertinoButton(
-              child: Text("Close", style: TextStyle(color: CupertinoColors.destructiveRed)),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      backgroundColor: CupertinoColors.systemBackground,
+      backgroundColor: CupertinoColors.black,
       navigationBar: CupertinoNavigationBar(
-        middle: Text("Instagram-Messenger", style: TextStyle(fontWeight: FontWeight.bold)),
-        leading: Icon(CupertinoIcons.chevron_back, size: 25),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(CupertinoIcons.video_camera, size: 25),
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: Icon(CupertinoIcons.info, size: 25),
-              onPressed: _showMembersDialog, //
-            ),
-          ],
+        middle: const Text(
+          "Instagram-Messenger",
+          style: TextStyle(fontWeight: FontWeight.bold, color: CupertinoColors.white),
+        ),
+        trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: const Icon(CupertinoIcons.info_circle, size: 25, color: CupertinoColors.activeBlue),
+          onPressed: () {
+            _showInfoDialog(context);
+          },
         ),
       ),
       child: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Search Bar with Left and Right Margin
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: CupertinoSearchTextField(placeholder: "Ask Meta AI or Search"),
-              ),
-              // Add spacing below search bar
-              SizedBox(height: 10),
+        child: Column(
+          children: [
 
-              // Horizontal Story Section
-              Container(
-                height: 90,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  itemCount: chats.length + 1, // Extra count for "Add Story"
-                  itemBuilder: (context, index) {
-                    if (index == 0) {
-                      // Add Story Icon
+
+            // Search
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: CupertinoSearchTextField(placeholder: "Search Contacts", style: TextStyle(color: CupertinoColors.white)),
+            ),
+            SizedBox(height: 10),
+
+
+
+            Container(
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  List<Map<String, String>> stories = [
+                    {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg"},
+                    {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg"},
+                    {"name": "John Lloyd Guevarra", "image": "images/JL.jpg"},
+                    {"name": "Michael De Ramos", "image": "images/mike.jpg"},
+                  ];
+
+                  if (index == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              ClipOval(
+                                child: Image.asset(
+                                  "images/sir.jpg",
+                                  height: 60,
+                                  width: 60,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: CupertinoColors.activeBlue,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: CupertinoColors.white, width: 2),
+                                  ),
+                                  child: const Icon(
+                                    CupertinoIcons.add,
+                                    color: CupertinoColors.white,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            "Your Story",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    int storyIndex = index - 1;
+                    if (storyIndex < stories.length) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Column(
                           children: [
-                            Stack(
-                              children: [
-                                ClipOval(
-                                  child: Image.asset(
-                                    "images/ChristianCaparra.jpg", // User's profile image
-                                    height: 60,
-                                    width: 60,
-                                    fit: BoxFit.cover,
-                                  ),
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                              ),
+                              child: ClipOval(
+                                child: Image.asset(
+                                  stories[storyIndex]["image"]!,
+                                  height: 60,
+                                  width: 60,
+                                  fit: BoxFit.cover,
                                 ),
-                                Positioned(
-                                  bottom: 0,
-                                  right: 0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: CupertinoColors.activeBlue,
-                                      shape: BoxShape.circle,
-                                      border: Border.all(color: CupertinoColors.white, width: 2),
-                                    ),
-                                    child: Icon(
-                                      CupertinoIcons.add,
-                                      color: CupertinoColors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Text(
-                              "Your Story",
-                              style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                              stories[storyIndex]["name"]!,
+                              style: const TextStyle(fontSize: 12, color: CupertinoColors.white),
                             ),
                           ],
                         ),
                       );
                     } else {
-                      // Existing Chat Avatars
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                          children: [
-                            ClipOval(
-                              child: Image.asset(
-                                chats[index - 1]["image"]!,
-                                height: 60,
-                                width: 60,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              chats[index - 1]["name"]!,
-                              style: TextStyle(fontSize: 12, color: CupertinoColors.white),
-                            ),
-                          ],
-                        ),
-                      );
+                      return Container();
                     }
-                  },
-                ),
+                  }
+                },
               ),
-
-              // Chat List
-              SizedBox(height: 10),
-              CupertinoScrollbar(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(), // Prevents double scrolling
-                  itemCount: chats.length,
-                  itemBuilder: (context, index) {
-                    return CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {
-                        _showChatDialog(
-                          chats[index]["name"]!,
-                          chats[index]["image"]!,
-                          chats[index]["message"]!,
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: Image.asset(
-                                chats[index]["image"]!,
-                                height: 50,
-                                width: 50,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 5),
-                                  Text(
-                                    chats[index]["name"]!,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                      color: CupertinoColors.white,
-                                    ),
-                                  ),
-                                  Text(
-                                    chats[index]["message"]!,
-                                    style: TextStyle(color: CupertinoColors.systemGrey),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Icon(CupertinoIcons.camera, color: CupertinoColors.systemGrey),
-                          ],
-                        ),
+            ),
+            // Group Chat Button
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => const GroupChatPage()),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    ClipOval(
+                      child: Image.asset(
+                        "images/sir.jpg",
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
                       ),
-                    );
-                  },
+                    ),
+                    const SizedBox(width: 10),
+                    const Expanded(
+                      child: Text(
+                        "DevOps Gc",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
+                      ),
+                    ),
+                    const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            //  "InformationPage" Group Chat Button
+            CupertinoButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => const InformationPage()),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    ClipOval(
+                      child: Image.asset(
+                        "images/shield.jpg",
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    const Expanded(
+                      child: Text(
+                        "Information Page",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
+                      ),
+                    ),
+                    const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
+                  ],
+                ),
+              ),
+            ),
+            // New section for displaying contact details
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                itemCount: participants.length,
+                itemBuilder: (context, index) {
+                  var participant = participants[index];
+
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: GestureDetector(
+                      onTap: () {
+
+                        _showParticipantDialog(context, participant);
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipOval(
+                            child: Image.asset(
+                              participant["image"]!,
+                              height: 50,
+                              width: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  participant["name"]!,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: CupertinoColors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  // Members Dialog
-  void _showMembersDialog() {
+  // Info
+  void _showInfoDialog(BuildContext context) {
+    List<Map<String, String>> members = [
+      {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg"},
+      {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg"},
+      {"name": "John Lloyd Guevarra", "image": "images/JL.jpg"},
+      {"name": "Michael De Ramos", "image": "images/mike.jpg"},
+    ];
+
     showCupertinoDialog(
       context: context,
       builder: (context) {
-        // Calculate the width based on the number of items
-        double dialogWidth = 50.0 * chats.length + 20.0; // 50 is the image width, 20 is padding space
-
         return CupertinoAlertDialog(
-          title: Text('Members'),
+          title: const Text('Group Members', style: TextStyle(color: CupertinoColors.white)),
           content: Container(
-            width: dialogWidth, // Dynamically set the width based on items
-            height: 80, // Adjust height to fit images properly
+            height: 250,
+
             child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal, // Scroll horizontally
-              child: Row(
-                children: List.generate(chats.length, (index) {
+              child: Column(
+                children: List.generate(members.length, (index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: ClipOval(
-                      child: Image.asset(
-                        chats[index]["image"]!,
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      children: [
+                        ClipOval(
+                          child: Image.asset(
+                            members[index]["image"]!,
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          members[index]["name"]!,
+                          style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
+                        ),
+                      ],
                     ),
                   );
                 }),
@@ -267,8 +302,10 @@ class _MyAppState extends State<MyApp> {
           ),
           actions: [
             CupertinoButton(
-              child: Text("Close", style: TextStyle(color: CupertinoColors.destructiveRed)),
-              onPressed: () => Navigator.pop(context),
+              child: const Text('Close', style: TextStyle(color: CupertinoColors.destructiveRed)),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ],
         );
@@ -276,9 +313,53 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-
-
-
-
-
+  // Show  information dialog
+  void _showParticipantDialog(BuildContext context, Map<String, String> participant) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text(participant["name"]!, style: const TextStyle(color: CupertinoColors.white)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ClipOval(
+                child: Image.asset(
+                  participant["image"]!,
+                  height: 80,
+                  width: 80,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Email: ${participant["email"]}",
+                style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
+              ),
+              Text(
+                "Phone: ${participant["phone"]}",
+                style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
+              ),
+            ],
+          ),
+          actions: [
+            CupertinoButton(
+              child: const Text('Close', style: TextStyle(color: CupertinoColors.destructiveRed)),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
+//  Data
+List<Map<String, String>> participants = [
+  {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg", "email": "caparrachristian47@gmail.com", "phone": "+639942060319"},
+  {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg", "email": "JhunielGalang@gmail.com", "phone": "+63123456789"},
+  {"name": "John Lloyd Guevarra", "image": "images/JL.jpg", "email": "johnlloydguevarra0405@gmail.com", "phone": "+639106284501"},
+  {"name": "Michael De Ramos", "image": "images/mike.jpg", "email": "deramosmichael27@gmail.com", "phone": "+639871654565"},
+];
