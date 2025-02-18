@@ -31,6 +31,7 @@ class InformationPage extends StatelessWidget {
     },
   ];
 //ito ba ok na?
+  //sbhn nyoko pag di ok para mabago ko
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
