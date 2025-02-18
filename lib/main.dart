@@ -16,9 +16,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  TextEditingController _num1 = TextEditingController();
-  TextEditingController _num2 = TextEditingController();
-  String ans = "";
 
   @override
   Widget build(BuildContext context) {
