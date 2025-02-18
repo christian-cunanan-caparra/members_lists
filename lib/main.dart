@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     {"name": "Christian Caparra", "message": "Sent Thursday", "image": "images/MariaClara.jpg"},
     {"name": "Michael De Ramos", "message": "deramosmichael27@gmail.com", "image": "images/mike.jpg"},
     {"name": "John Lloyd Guevarra", "message": "johnlloydguevarra0405@gmail.com", "image": "images/JL.jpg"},
-    {"name": "Christian Caparra", "message": "Sent", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Jhuniel Galang", "message": "Sent", "image": "images/ChristianCaparra.jpg"},
     {"name": "Christian Caparra", "message": "Reacted to your message", "image": "images/ChristianCaparra.jpg"},
   ];
 
