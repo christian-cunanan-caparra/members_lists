@@ -18,6 +18,8 @@ class _MyAppState extends State<MyApp> {
 
 
 
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -104,9 +106,15 @@ class _MyAppState extends State<MyApp> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
+                Row(
+                  children: [
+                    ClipOval(child: Image.asset('images/JL.jpg', height: 100,)),
+                  ],
+                )
+                
 
 
-//updateds
+
 
               ],
             ),
