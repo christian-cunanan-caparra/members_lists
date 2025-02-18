@@ -17,15 +17,16 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Map<String, String>> chats = [
-    {"name": "Christian Caparra", "message": "Hi po?", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Christian Caparra", "message": "caparrachristian47@gmail.com", "image": "images/ChristianCaparra.jpg"},
     {"name": "Christian Caparra", "message": "Sent Thursday", "image": "images/MariaClara.jpg"},
-    {"name": "John Doe", "message": "Ewan", "image": "images/ChristianCaparra.jpg"},
-    {"name": "Jane Smith", "message": "Seen last week", "image": "images/ChristianCaparra.jpg"},
-    {"name": "Alex Johnson", "message": "Sent", "image": "images/ChristianCaparra.jpg"},
-    {"name": "Emily Davis", "message": "Reacted to your message", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Christian Caparra", "message": "Ewan", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Christian Caparra", "message": "Seen last week", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Christian Caparra", "message": "Sent", "image": "images/ChristianCaparra.jpg"},
+    {"name": "Christian Caparra", "message": "Reacted to your message", "image": "images/ChristianCaparra.jpg"},
   ];
 
-  void _showChatDialog(String name, String image) {
+  // Show chat information in a dialog
+  void _showChatDialog(String name, String image, String message) {
     showCupertinoDialog(
       context: context,
       builder: (context) {
@@ -44,50 +45,9 @@ class _MyAppState extends State<MyApp> {
               ),
               SizedBox(height: 10),
               Text(name, style: TextStyle(fontWeight: FontWeight.bold, color: CupertinoColors.white)),
+              SizedBox(height: 10),
+              Text(message, style: TextStyle(color: CupertinoColors.systemGrey)),
             ],
-          ),
-          actions: [
-            CupertinoButton(
-              child: Text("Close", style: TextStyle(color: CupertinoColors.destructiveRed)),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showMembersDialog() {
-    showCupertinoDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: Text('Members'),
-          content: Container(
-            height: 200, // Set a fixed height for scrolling
-            child: SingleChildScrollView(
-              child: Column(
-                children: List.generate(chats.length, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    child: Row(
-                      children: [
-                        ClipOval(
-                          child: Image.asset(
-                            chats[index]["image"]!,
-                            height: 50,
-                            width: 50,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(chats[index]["name"]!),
-                      ],
-                    ),
-                  );
-                }),
-              ),
-            ),
           ),
           actions: [
             CupertinoButton(
@@ -114,7 +74,7 @@ class _MyAppState extends State<MyApp> {
             CupertinoButton(
               padding: EdgeInsets.zero,
               child: Icon(CupertinoIcons.info, size: 25),
-              onPressed: _showMembersDialog, // Call the new function
+              onPressed: _showMembersDialog, //
             ),
           ],
         ),
@@ -222,6 +182,7 @@ class _MyAppState extends State<MyApp> {
                         _showChatDialog(
                           chats[index]["name"]!,
                           chats[index]["image"]!,
+                          chats[index]["message"]!,
                         );
                       },
                       child: Padding(
@@ -271,4 +232,47 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+
+  // Members Dialog
+  void _showMembersDialog() {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text('Members'),
+          content: Container(
+            width: 300, // Adjust the width as needed
+            height: 100, // Adjust the height to fit one row of images
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal, // Scroll horizontally
+              child: Row(
+                children: List.generate(chats.length, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: ClipOval(
+                      child: Image.asset(
+                        chats[index]["image"]!,
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ),
+          actions: [
+            CupertinoButton(
+              child: Text("Close", style: TextStyle(color: CupertinoColors.destructiveRed)),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
 }
