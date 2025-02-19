@@ -319,7 +319,7 @@ class _MyAppState extends State<MyApp> {
                           const SizedBox(width: 10),
                           const Expanded(
                             child: Text(
-                              "Members Information",
+                              "Resume of the Members",
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
                             ),
                           ),

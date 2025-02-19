@@ -37,7 +37,7 @@ class information_page extends StatelessWidget {
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
       navigationBar: CupertinoNavigationBar(
-        middle: const Text("Members Information's"),
+        middle: const Text("Members Resume's"),
       ),
       child: SafeArea(
         child: Column(
