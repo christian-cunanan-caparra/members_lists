@@ -77,31 +77,28 @@ class _MyAppState extends State<MyApp> {
             ),
             const SizedBox(height: 10),
 
-            // Stories Section
+            //story tohh
             Container(
               height: 100,
-              child: ListView.builder(
+              child: ListView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  List<Map<String, String>> stories = [
-                    {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg"},
-                    {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg"},
-                    {"name": "John Lloyd Guevarra", "image": "images/JL.jpg"},
-                    {"name": "Michael De Ramos", "image": "images/mike.jpg"},
-                  ];
+                children: [
 
-                  if (index == 0) {
-                    return GestureDetector(
-                      onTap: () => _showStoryDialog(context, "Your Story", "images/sir.jpg"),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                ClipOval(
+                  GestureDetector(
+                    onTap: () => _showStoryDialog(context, "Your Story", "images/gfnisir.jpg"),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: CupertinoColors.activeBlue, width: 2), // Blue border
+                                ),
+                                child: ClipOval(
                                   child: Image.asset(
                                     "images/sir.jpg",
                                     height: 60,
@@ -109,73 +106,155 @@ class _MyAppState extends State<MyApp> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                Positioned(
-                                  bottom: 0,
-                                  right: 0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: CupertinoColors.activeBlue,
-                                      shape: BoxShape.circle,
-                                      border: Border.all(color: CupertinoColors.white, width: 2),
-                                    ),
-                                    child: const Icon(
-                                      CupertinoIcons.add,
-                                      color: CupertinoColors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 5),
-                            const Text(
-                              "Your Story",
-                              style: TextStyle(fontSize: 12, color: CupertinoColors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  } else {
-                    int storyIndex = index - 1;
-                    if (storyIndex < stories.length) {
-                      return GestureDetector(
-                        onTap: () => _showStoryDialog(
-                            context, stories[storyIndex]["name"]!, stories[storyIndex]["image"]!),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: CupertinoColors.activeBlue, width: 2),
-                                ),
-                                child: ClipOval(
-                                  child: Image.asset(
-                                    stories[storyIndex]["image"]!,
-                                    height: 60,
-                                    width: 60,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
                               ),
-                              const SizedBox(height: 5),
-                              Text(
-                                stories[storyIndex]["name"]!,
-                                style: const TextStyle(fontSize: 12, color: CupertinoColors.white),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: CupertinoColors.activeBlue,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                                  ),
+                                  child: const Icon(
+                                    CupertinoIcons.add,
+                                    color: CupertinoColors.white,
+                                    size: 20,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                      );
-                    } else {
-                      return Container();
-                    }
-                  }
-                },
+                          const SizedBox(height: 5),
+                          const Text(
+                            "Your Story",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap: () => _showStoryDialog(context, "Christian Caparra", "images/ChristianCaparra.jpg"),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                            ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                "images/ChristianCaparra.jpg",
+                                height: 60,
+                                width: 60,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            "Christian Caparra",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => _showStoryDialog(context, "Jhuniel Galang", "images/Jhuniel.jpg"),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                            ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                "images/Jhuniel.jpg",
+                                height: 60,
+                                width: 60,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            "Jhuniel Galang",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => _showStoryDialog(context, "John Lloyd Guevarra", "images/JL.jpg"),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                            ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                "images/JL.jpg",
+                                height: 60,
+                                width: 60,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            "John Lloyd Guevarra",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => _showStoryDialog(context, "Michael De Ramos", "images/mike.jpg"),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                            ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                "images/mike.jpg",
+                                height: 60,
+                                width: 60,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            "Michael De Ramos",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+
 
             const SizedBox(height: 10),
 
