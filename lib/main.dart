@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'GroupChatPage.dart';
-import 'InformationPage.dart';
+import 'group_chat.dart';
+import 'information_page.dart';
 
 void main() {
   runApp(const CupertinoApp(
@@ -180,7 +179,7 @@ class _MyAppState extends State<MyApp> {
 
             const SizedBox(height: 10),
 
-            // Scrollable Group Chat Section
+            // Scrollable
             Expanded(
               child: ListView(
                 children: [
@@ -190,7 +189,7 @@ class _MyAppState extends State<MyApp> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => const GroupChatPage()),
+                        CupertinoPageRoute(builder: (context) => const group_chat()),
                       );
                     },
                     child: Container(
@@ -212,7 +211,7 @@ class _MyAppState extends State<MyApp> {
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
                             ),
                           ),
-                          const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
+
                         ],
                       ),
                     ),
@@ -223,7 +222,7 @@ class _MyAppState extends State<MyApp> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(builder: (context) => const InformationPage()),
+                        CupertinoPageRoute(builder: (context) => const information_page()),
                       );
                     },
                     child: Container(
@@ -245,7 +244,7 @@ class _MyAppState extends State<MyApp> {
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
                             ),
                           ),
-                          const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
+
                         ],
                       ),
                     ),
@@ -372,27 +371,30 @@ class _MyAppState extends State<MyApp> {
       builder: (context) {
         return CupertinoAlertDialog(
           title: Text(participant["name"]!, style: const TextStyle(color: CupertinoColors.white)),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ClipOval(
-                child: Image.asset(
-                  participant["image"]!,
-                  height: 80,
-                  width: 80,
-                  fit: BoxFit.cover,
+          content: Container(
+            height: 200, // Adjust the height as needed
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end, // Align content to the bottom
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    participant["image"]!,
+                    height: 80,
+                    width: 80,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Email: ${participant["email"]}",
-                style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
-              ),
-              Text(
-                "Phone: ${participant["phone"]}",
-                style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
-              ),
-            ],
+                const SizedBox(height: 10),
+                Text(
+                  "Email: ${participant["email"]}",
+                  style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
+                ),
+                Text(
+                  "Phone: ${participant["phone"]}",
+                  style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
+                ),
+              ],
+            ),
           ),
           actions: [
             CupertinoButton(
@@ -422,7 +424,7 @@ void _showStoryDialog(BuildContext context, String name, String imagePath) {
     context: context,
     builder: (context) {
       return CupertinoPageScaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: CupertinoColors.black,
         child: Stack(
           children: [
             // Fullscreen Story Image
@@ -439,18 +441,8 @@ void _showStoryDialog(BuildContext context, String name, String imagePath) {
               left: 20,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: CupertinoColors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+
+
               ),
             ),
 
@@ -465,7 +457,7 @@ void _showStoryDialog(BuildContext context, String name, String imagePath) {
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.black.withOpacity(0.6),
+                    color: CupertinoColors.black,
                   ),
                   padding: const EdgeInsets.all(8),
                   child: const Icon(
@@ -482,6 +474,7 @@ void _showStoryDialog(BuildContext context, String name, String imagePath) {
     },
   );
 }
+
 
 
 

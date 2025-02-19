@@ -1,84 +1,64 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-class InformationPage extends StatelessWidget {
-  const InformationPage({super.key});
 
-  final List<Map<String, String>> contactInfo = const [
-    {
-      "name": "Christian Caparra",
-      "message": "Address: Sta Lucia Sta Ana, Pampanga\nPhone: +639942060319\ncaparrachristian47@gmail.com",
-      "image": "images/ChristianCaparra.jpg",
-      "time": "12:30 PM"
-    },
-    {
-      "name": "Jhuniel Galang",
-      "message": "Address: San Nicolas Sta Ana, Pampanga\nPhone: +63123456789\nJhunielGalang@gmail.com",
-      "image": "images/Jhuniel.jpg",
-      "time": "12:32 PM"
-    },
-    {
-      "name": "John Lloyd Guevarra",
-      "message": "Address: San Luis Pampanga\nPhone: +639106284501\njohnlloydguevarra0405@gmail.com",
-      "image": "images/JL.jpg",
-      "time": "12:35 PM"
-    },
-    {
-      "name": "Michael De Ramos",
-      "message": "Address: San Nicolas Sta Ana, Pampanga\nPhone: +639871654565\nderamosmichael27@gmail.com",
-      "image": "images/mike.jpg",
-      "time": "12:40 PM"
-    },
+class group_chat extends StatelessWidget {
+  const group_chat({super.key});
+
+  final List<Map<String, String>> messages = const [
+    {"name": "Christian Caparra", "message": "Shatawt sa mga kabataan jan", "image": "images/ChristianCaparra.jpg", "time": "12:30 PM"},
+    {"name": "Michael De Ramos", "message": "Ma ano Ulam!!", "image": "images/mike.jpg", "time": "12:32 PM"},
+    {"name": "John Lloyd Guevarra", "message": "Code code din di puro tulog", "image": "images/JL.jpg", "time": "12:35 PM"},
+    {"name": "Jhuniel Galang", "message": "Ay payag kayo non?", "image": "images/Jhuniel.jpg", "time": "12:37 PM"},
   ];
-//ito ba ok na?
-  //sbhn nyoko pag di ok para mabago ko
+
+
+  //aso this???
+  //di akosure sa design ko or sakto lang
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
       navigationBar: CupertinoNavigationBar(
-        middle: const Text("Members Information's"),
+        middle: const Text("DevOps Gc"),
       ),
       child: SafeArea(
         child: Column(
           children: [
-            // Contact  list
+
+
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                itemCount: contactInfo.length,
+                itemCount: messages.length,
                 itemBuilder: (context, index) {
-                  final contact = contactInfo[index];
+                  final message = messages[index];
 
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
-
+                        // Profile image (same for all)
                         ClipOval(
                           child: Image.asset(
-                            contact["image"]!,
-                            height: 50,
-                            width: 50,
+                            message["image"]!,
+                            height: 40,
+                            width: 40,
                             fit: BoxFit.cover,
                           ),
                         ),
                         const SizedBox(width: 10),
-
-
-
+                        // Message bubble
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                contact["name"]!,
+                                message["name"]!,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: CupertinoColors.white,
-                                  fontSize: 16,
+                                  fontSize: 14,
                                 ),
                               ),
                               const SizedBox(height: 5),
@@ -97,7 +77,7 @@ class InformationPage extends StatelessWidget {
                                   ],
                                 ),
                                 child: Text(
-                                  contact["message"]!,
+                                  message["message"]!,
                                   style: const TextStyle(
                                     color: CupertinoColors.black,
                                   ),
@@ -105,7 +85,7 @@ class InformationPage extends StatelessWidget {
                               ),
                               const SizedBox(height: 5),
                               Text(
-                                contact["time"]!,
+                                message["time"]!,
                                 style: const TextStyle(
                                   fontSize: 10,
                                   color: CupertinoColors.systemGrey,
@@ -118,6 +98,19 @@ class InformationPage extends StatelessWidget {
                     ),
                   );
                 },
+              ),
+            ),
+
+
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 15), // Added margin to the input container
+              child: CupertinoTextField(
+                placeholder: "Type a message...",
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+                decoration: BoxDecoration(
+                  color: CupertinoColors.systemGrey5, // Set background color for the text field
+                  borderRadius: BorderRadius.circular(20),
+                ),
               ),
             ),
             const SizedBox(height: 10),
