@@ -451,7 +451,7 @@ class _MyAppState extends State<MyApp> {
         return CupertinoAlertDialog(
           title: Text(participant["name"]!, style: const TextStyle(color: CupertinoColors.white)),
           content: Container(
-            height: 200, // Adjust the height as needed
+            height: 150, // Adjust the height as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end, // Align content to the bottom
               children: [
