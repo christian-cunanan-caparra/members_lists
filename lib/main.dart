@@ -10,8 +10,39 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final TextEditingController _searchController = TextEditingController();
+  List<Map<String, String>> filteredParticipants = List.from(participants);
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(_filterParticipants);
+  }
+
+  @override
+  void dispose() {
+    _searchController.removeListener(_filterParticipants);
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  void _filterParticipants() {
+    final query = _searchController.text.toLowerCase();
+    setState(() {
+      filteredParticipants = participants.where((participant) {
+        final name = participant["name"]!.toLowerCase();
+        return name.contains(query);
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +50,7 @@ class MyApp extends StatelessWidget {
       backgroundColor: CupertinoColors.black,
       navigationBar: CupertinoNavigationBar(
         middle: const Text(
-          "Instagram-Messenger",
+          "RonnieSngl",
           style: TextStyle(fontWeight: FontWeight.bold, color: CupertinoColors.white),
         ),
         trailing: CupertinoButton(
@@ -33,18 +64,21 @@ class MyApp extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-
-
             // Search
-            const
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: CupertinoSearchTextField(placeholder: "Ask Meta AI or Search", style: TextStyle(color: CupertinoColors.white)),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: CupertinoSearchTextField(
+                controller: _searchController,
+                placeholder: "Ask Meta AI or Search",
+                style: const TextStyle(color: CupertinoColors.white),
+                onChanged: (value) {
+                  _filterParticipants();
+                },
+              ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
-
-
+            // Stories Section
             Container(
               height: 100,
               child: ListView.builder(
@@ -60,73 +94,80 @@ class MyApp extends StatelessWidget {
                   ];
 
                   if (index == 0) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "images/sir.jpg",
-                                  height: 60,
-                                  width: 60,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: CupertinoColors.activeBlue,
-                                    shape: BoxShape.circle,
-                                    border: Border.all(color: CupertinoColors.white, width: 2),
-                                  ),
-                                  child: const Icon(
-                                    CupertinoIcons.add,
-                                    color: CupertinoColors.white,
-                                    size: 20,
+                    return GestureDetector(
+                      onTap: () => _showStoryDialog(context, "Your Story", "images/sir.jpg"),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Column(
+                          children: [
+                            Stack(
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    "images/sir.jpg",
+                                    height: 60,
+                                    width: 60,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 5),
-                          const Text(
-                            "Your Story",
-                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
-                          ),
-                        ],
+                                Positioned(
+                                  bottom: 0,
+                                  right: 0,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: CupertinoColors.activeBlue,
+                                      shape: BoxShape.circle,
+                                      border: Border.all(color: CupertinoColors.white, width: 2),
+                                    ),
+                                    child: const Icon(
+                                      CupertinoIcons.add,
+                                      color: CupertinoColors.white,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 5),
+                            const Text(
+                              "Your Story",
+                              style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   } else {
                     int storyIndex = index - 1;
                     if (storyIndex < stories.length) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: CupertinoColors.activeBlue, width: 2),
-                              ),
-                              child: ClipOval(
-                                child: Image.asset(
-                                  stories[storyIndex]["image"]!,
-                                  height: 60,
-                                  width: 60,
-                                  fit: BoxFit.cover,
+                      return GestureDetector(
+                        onTap: () => _showStoryDialog(
+                            context, stories[storyIndex]["name"]!, stories[storyIndex]["image"]!),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                                ),
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    stories[storyIndex]["image"]!,
+                                    height: 60,
+                                    width: 60,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              stories[storyIndex]["name"]!,
-                              style: const TextStyle(fontSize: 12, color: CupertinoColors.white),
-                            ),
-                          ],
+                              const SizedBox(height: 5),
+                              Text(
+                                stories[storyIndex]["name"]!,
+                                style: const TextStyle(fontSize: 12, color: CupertinoColors.white),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     } else {
@@ -136,119 +177,128 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ),
-            // Group Chat Button
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(builder: (context) => const GroupChatPage()),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        "images/sir.jpg",
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    const Expanded(
-                      child: Text(
-                        "DevOps Gc",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
-                      ),
-                    ),
-                    const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
-                  ],
-                ),
-              ),
-            ),
-            //  "InformationPage" Group Chat Button
-            CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(builder: (context) => const InformationPage()),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        "images/shield.jpg",
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    const Expanded(
-                      child: Text(
-                        "Information Page",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
-                      ),
-                    ),
-                    const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
-                  ],
-                ),
-              ),
-            ),
-            // New section for displaying contact details
+
+            const SizedBox(height: 10),
+
+            // Scrollable Group Chat Section
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                itemCount: participants.length,
-                itemBuilder: (context, index) {
-                  var participant = participants[index];
-
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: GestureDetector(
-                      onTap: () {
-
-                        _showParticipantDialog(context, participant);
-                      },
+              child: ListView(
+                children: [
+                  // Group Chat Button
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (context) => const GroupChatPage()),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ClipOval(
                             child: Image.asset(
-                              participant["image"]!,
+                              "images/sir.jpg",
                               height: 50,
                               width: 50,
                               fit: BoxFit.cover,
                             ),
                           ),
                           const SizedBox(width: 10),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  participant["name"]!,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: CupertinoColors.white,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ],
+                          const Expanded(
+                            child: Text(
+                              "DevOps Gc",
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
                             ),
                           ),
+                          const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
                         ],
                       ),
                     ),
-                  );
-                },
+                  ),
+                  // "InformationPage" Group Chat Button
+                  CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (context) => const InformationPage()),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          ClipOval(
+                            child: Image.asset(
+                              "images/shield.jpg",
+                              height: 50,
+                              width: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          const Expanded(
+                            child: Text(
+                              "Members Information",
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
+                            ),
+                          ),
+                          const Icon(CupertinoIcons.chevron_right, color: CupertinoColors.systemGrey),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Contact List
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    itemCount: filteredParticipants.length,
+                    itemBuilder: (context, index) {
+                      var participant = filteredParticipants[index];
+
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: GestureDetector(
+                          onTap: () {
+                            _showParticipantDialog(context, participant);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipOval(
+                                child: Image.asset(
+                                  participant["image"]!,
+                                  height: 50,
+                                  width: 50,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      participant["name"]!,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: CupertinoColors.white,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ],
@@ -256,6 +306,8 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
+
 
   // Info
   void _showInfoDialog(BuildContext context) {
@@ -273,7 +325,6 @@ class MyApp extends StatelessWidget {
           title: const Text('Group Members', style: TextStyle(color: CupertinoColors.white)),
           content: Container(
             height: 250,
-
             child: SingleChildScrollView(
               child: Column(
                 children: List.generate(members.length, (index) {
@@ -314,7 +365,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  // Show  information dialog
+  // Show information dialog
   void _showParticipantDialog(BuildContext context, Map<String, String> participant) {
     showCupertinoDialog(
       context: context,
@@ -356,12 +407,81 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//ok ba to pa comment if hinde ara
 
-//  Data
+// Data
 List<Map<String, String>> participants = [
   {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg", "email": "caparrachristian47@gmail.com", "phone": "+639942060319"},
   {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg", "email": "JhunielGalang@gmail.com", "phone": "+63123456789"},
   {"name": "John Lloyd Guevarra", "image": "images/JL.jpg", "email": "johnlloydguevarra0405@gmail.com", "phone": "+639106284501"},
   {"name": "Michael De Ramos", "image": "images/mike.jpg", "email": "deramosmichael27@gmail.com", "phone": "+639871654565"},
 ];
+
+
+void _showStoryDialog(BuildContext context, String name, String imagePath) {
+  showCupertinoDialog(
+    context: context,
+    builder: (context) {
+      return CupertinoPageScaffold(
+        backgroundColor: Colors.black,
+        child: Stack(
+          children: [
+            // Fullscreen Story Image
+            Positioned.fill(
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+              ),
+            ),
+
+            // Name Overlay (Top-Left)
+            Positioned(
+              top: 40,
+              left: 20,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: CupertinoColors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
+            // Close Button (Top-Right)
+            Positioned(
+              top: 35,
+              right: 20,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.black.withOpacity(0.6),
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  child: const Icon(
+                    CupertinoIcons.xmark,
+                    color: CupertinoColors.white,
+                    size: 24,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+
+
