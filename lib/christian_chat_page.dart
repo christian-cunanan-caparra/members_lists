@@ -43,7 +43,7 @@ class ChristianChatPage extends StatelessWidget {
 
   Widget _buildProfileHeader() {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           ClipRRect(
@@ -74,8 +74,6 @@ class ChristianChatPage extends StatelessWidget {
             style: TextStyle(color: CupertinoColors.systemGrey2),
           ),
           const SizedBox(height: 8),
-
-
         ],
       ),
     );
@@ -84,9 +82,7 @@ class ChristianChatPage extends StatelessWidget {
   Widget _buildMessageInput() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: const BoxDecoration(
-        border: Border(top: BorderSide(color: CupertinoColors.systemGrey)),
-      ),
+
       child: Row(
         children: [
           Expanded(
@@ -96,11 +92,10 @@ class ChristianChatPage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          CupertinoButton(
-            padding: EdgeInsets.zero,
-            child: const Icon(CupertinoIcons.paperplane_fill, color: CupertinoColors.activeBlue),
-            onPressed: () {},
-          ),
+
+
+          //icon for enter
+
         ],
       ),
     );
