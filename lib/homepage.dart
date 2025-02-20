@@ -72,11 +72,11 @@ class _HomepageState extends State<Homepage> {
             Expanded(
               child: ListView(
                 children: [
-                  _buildPost("Christian Caparra", "images/ChristianCaparra.jpg", "images/ChristianCaparra.jpg", "9,234 likes", "Enjoying the day!"),
-                  _buildPost("John Lloyd Guevarra", "images/JL.jpg", "images/JL.jpg", "2,345 likes", "Beautiful sunset!"),
-                  _buildPost("Michael De Ramos", "images/mike.jpg", "images/mike.jpg", "3,456 likes", "Weekend vibes!"),
-                  _buildPost("Jhuniel Galang", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,567 likes", "Good times!"),
-                  _buildPost("Samuel Miranda", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,827 likes", "Good Dayc!"),
+                  _buildPost("Christian Caparra", "images/ChristianCaparra.jpg", "images/ChristianCaparra.jpg", "9,234 likes", "stress napo"),
+                  _buildPost("John Lloyd Guevarra", "images/JL.jpg", "images/JL.jpg", "2,345 likes", "hello tara kain!"),
+                  _buildPost("Michael De Ramos", "images/mike.jpg", "images/mike.jpg", "3,456 likes", "kaya pa!"),
+                  _buildPost("Jhuniel Galang", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,567 likes", "wag na ayaw kona!"),
+                  _buildPost("Samuel Miranda", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,827 likes", "hello!"),
                 ],
               ),
             ),
