@@ -5,6 +5,9 @@ class ChristianChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final messageMaxWidth = screenWidth * 0.7;
+
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: const Text("Christian Caparra"),
@@ -23,12 +26,12 @@ class ChristianChatPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Column(
                     children: [
-                      _buildReceivedMessage("Goodmorning sir ask lang po", "images/ChristianCaparra.jpg"),
-                      _buildSentMessage("ano yun?"),
-                      _buildReceivedMessage("San po pwede bumili na dd4 na ram", "images/ChristianCaparra.jpg"),
-                      _buildSentMessage("Itech"),
-                      _buildSentMessage("Cyberzone"),
-                      _buildReceivedMessage("Sige po sir Thankyou po", "images/ChristianCaparra.jpg"),
+                      _buildReceivedMessage("Goodmorning sir ask lang po", "images/ChristianCaparra.jpg", messageMaxWidth),
+                      _buildSentMessage("ano yun?", messageMaxWidth),
+                      _buildReceivedMessage("San po pwede bumili na dd4 na ram", "images/ChristianCaparra.jpg", messageMaxWidth),
+                      _buildSentMessage("Itech", messageMaxWidth),
+                      _buildSentMessage("Cyberzone", messageMaxWidth),
+                      _buildReceivedMessage("Sige po sir Thankyou po", "images/ChristianCaparra.jpg", messageMaxWidth),
                     ],
                   ),
                 ),
@@ -82,7 +85,6 @@ class ChristianChatPage extends StatelessWidget {
   Widget _buildMessageInput() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-
       child: Row(
         children: [
           Expanded(
@@ -92,34 +94,34 @@ class ChristianChatPage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-
-
-          //icon for enter
-
+          const Icon(CupertinoIcons.arrow_up_circle_fill, color: CupertinoColors.activeBlue, size: 30),
         ],
       ),
     );
   }
 
-  Widget _buildSentMessage(String message) {
+  Widget _buildSentMessage(String message, double maxWidth) {
     return Align(
       alignment: Alignment.centerRight,
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        decoration: BoxDecoration(
-          color: CupertinoColors.activeBlue,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Text(
-          message,
-          style: const TextStyle(color: CupertinoColors.white),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth),
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: CupertinoColors.activeBlue,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Text(
+            message,
+            style: const TextStyle(color: CupertinoColors.white),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildReceivedMessage(String message, String imageName) {
+  Widget _buildReceivedMessage(String message, String imageName, double maxWidth) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Row(
@@ -135,7 +137,8 @@ class ChristianChatPage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8),
-          Expanded(
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: maxWidth),
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 4),
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -154,7 +157,3 @@ class ChristianChatPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
