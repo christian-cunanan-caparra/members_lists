@@ -97,7 +97,7 @@ class _chatState extends State<Chat> {
                                 ),
                                 child: ClipOval(
                                   child: Image.asset(
-                                    "images/sir.jpg",
+                                    "images/gfnisir.jpg",
                                     height: 60,
                                     width: 60,
                                     fit: BoxFit.cover,
