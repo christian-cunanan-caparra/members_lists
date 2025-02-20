@@ -32,7 +32,7 @@ class _HomepageState extends State<Homepage> {
             ),
             CupertinoButton(
               padding: EdgeInsets.zero,
-              child: const Icon(CupertinoIcons.paperplane, size: 25, color: CupertinoColors.white),
+              child: const Icon(CupertinoIcons.chat_bubble_2, size: 25, color: CupertinoColors.white),
               onPressed: () {
                 // Navigate to messages
                 Navigator.push(
@@ -63,6 +63,7 @@ class _HomepageState extends State<Homepage> {
                     _buildStory("John Lloyd", "images/JL.jpg"),
                     _buildStory("Michael", "images/mike.jpg"),
                     _buildStory("Samuel", "images/mike.jpg"),
+
                   ],
                 ),
               ),

@@ -142,8 +142,10 @@ class _MyAppState extends State<MyApp> {
                 ),
 
 
+
+
                 Container(
-                  width: double.infinity,
+                  width: double.maxFinite,
                   decoration: BoxDecoration(
                     border: Border.all(color: CupertinoColors.systemGrey),
                     borderRadius: BorderRadius.circular(8),

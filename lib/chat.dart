@@ -1,18 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'group_chat.dart';
-import 'information_page.dart';
 
-
+import 'christian_chat_page.dart';
+import 'jhuniel_chat_page.dart';
 
 class Chat extends StatefulWidget {
   const Chat({super.key});
 
-
-@override
-State<Chat> createState() => _chatState();
+  @override
+  State<Chat> createState() => _ChatState();
 }
 
-class _chatState extends State<Chat> {
+class _ChatState extends State<Chat> {
   final TextEditingController _searchController = TextEditingController();
   List<Map<String, String>> filteredParticipants = List.from(participants);
 
@@ -48,13 +46,6 @@ class _chatState extends State<Chat> {
           "RonnieSngl",
           style: TextStyle(fontWeight: FontWeight.bold, color: CupertinoColors.white),
         ),
-        trailing: CupertinoButton(
-          padding: EdgeInsets.zero,
-          child: const Icon(CupertinoIcons.info_circle, size: 25, color: CupertinoColors.activeBlue),
-          onPressed: () {
-            _showInfoDialog(context);
-          },
-        ),
       ),
       child: SafeArea(
         child: Column(
@@ -64,7 +55,7 @@ class _chatState extends State<Chat> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: CupertinoSearchTextField(
                 controller: _searchController,
-                placeholder: "Ask Meta AI or Search",
+                placeholder: "Search",
                 style: const TextStyle(color: CupertinoColors.white),
                 onChanged: (value) {
                   _filterParticipants();
@@ -73,15 +64,13 @@ class _chatState extends State<Chat> {
             ),
             const SizedBox(height: 10),
 
-            //story tohh
-
+            // Story Section
             SizedBox(
               height: 100,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 children: [
-
                   GestureDetector(
                     onTap: () => _showStoryDialog(context, "Your Story", "images/gfnisir.jpg"),
                     child: Padding(
@@ -93,7 +82,7 @@ class _chatState extends State<Chat> {
                               Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: CupertinoColors.activeBlue, width: 2), // Blue border
+                                  border: Border.all(color: CupertinoColors.activeBlue, width: 2),
                                 ),
                                 child: ClipOval(
                                   child: Image.asset(
@@ -132,8 +121,9 @@ class _chatState extends State<Chat> {
                     ),
                   ),
 
+
                   GestureDetector(
-                    onTap: () => _showStoryDialog(context, "Christian Caparra", "images/ChristianCaparra.jpg"),
+                    onTap: () => _showStoryDialog(context, "Christian", "images/ChristianCaparra.jpg"),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -154,15 +144,20 @@ class _chatState extends State<Chat> {
                           ),
                           const SizedBox(height: 5),
                           const Text(
-                            "Christian Caparra",
+                            "Christian",
                             style: TextStyle(fontSize: 12, color: CupertinoColors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
+
+
+
+
+
                   GestureDetector(
-                    onTap: () => _showStoryDialog(context, "Jhuniel Galang", "images/Jhuniel.jpg"),
+                    onTap: () => _showStoryDialog(context, "Jhuniel", "images/Jhuniel.jpg"),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -183,15 +178,21 @@ class _chatState extends State<Chat> {
                           ),
                           const SizedBox(height: 5),
                           const Text(
-                            "Jhuniel Galang",
+                            "Jhuniel",
                             style: TextStyle(fontSize: 12, color: CupertinoColors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
+
+
+
+
+
+
                   GestureDetector(
-                    onTap: () => _showStoryDialog(context, "John Lloyd Guevarra", "images/JL.jpg"),
+                    onTap: () => _showStoryDialog(context, "John Lloyd", "images/JL.jpg"),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -212,15 +213,22 @@ class _chatState extends State<Chat> {
                           ),
                           const SizedBox(height: 5),
                           const Text(
-                            "John Lloyd Guevarra",
+                            "John Lloyd",
                             style: TextStyle(fontSize: 12, color: CupertinoColors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
+
+
+
+
+
+
+
                   GestureDetector(
-                    onTap: () => _showStoryDialog(context, "Michael De Ramos", "images/mike.jpg"),
+                    onTap: () => _showStoryDialog(context, "Michael", "images/mike.jpg"),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -241,119 +249,118 @@ class _chatState extends State<Chat> {
                           ),
                           const SizedBox(height: 5),
                           const Text(
-                            "Michael De Ramos",
+                            "Michael",
                             style: TextStyle(fontSize: 12, color: CupertinoColors.white),
                           ),
                         ],
                       ),
                     ),
                   ),
+
+
+
+
+
+
+
+
+                  GestureDetector(
+                    onTap: () => _showStoryDialog(context, "Samuel Miranda", "images/JL.jpg"),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: CupertinoColors.activeBlue, width: 2),
+                            ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                "images/JL.jpg",
+                                height: 75,
+                                width: 75,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
+                          const Text(
+                            "Samuel Miranda",
+                            style: TextStyle(fontSize: 12, color: CupertinoColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+
+
+
+
                 ],
               ),
             ),
 
-
             const SizedBox(height: 10),
 
-            // Scrollable
+            // Contact List
             Expanded(
-              child: ListView(
-                children: [
-                  // Group Chat Button
-                  CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(builder: (context) => const group_chat()),
-                      );
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                itemCount: filteredParticipants.length,
+                itemBuilder: (context, index) {
+                  var participant = filteredParticipants[index];
+
+                  return GestureDetector(
+                    onTap: () {
+                      if (participant["name"] == "Christian Caparra") {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(builder: (context) => const ChristianChatPage()),
+                        );
+
+
+                    } else if (participant["name"] == "Jhuniel Galang") {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const JhunielChatPage()),
+                        );
+
+                        //dito nyo add sainyo gamit kayo else if
+
+
+                      }
+
+
+
+
                     },
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ClipOval(
                             child: Image.asset(
-                              "images/sir.jpg",
+                              participant["image"]!,
                               height: 50,
                               width: 50,
                               fit: BoxFit.cover,
                             ),
                           ),
                           const SizedBox(width: 10),
-                          const Expanded(
-                            child: Text(
-                              "DevOps Gc",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
-                            ),
-                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
 
-                        ],
-                      ),
-                    ),
-                  ),
-                  // "InformationPage" Group Chat Button
-                  CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(builder: (context) => const information_page()),
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          ClipOval(
-                            child: Image.asset(
-                              "images/shield.jpg",
-                              height: 50,
-                              width: 50,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          const Expanded(
-                            child: Text(
-                              "Resume of the Members",
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: CupertinoColors.white),
-                            ),
-                          ),
 
-                        ],
-                      ),
-                    ),
-                  ),
-                  // Contact List
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                    itemCount: filteredParticipants.length,
-                    itemBuilder: (context, index) {
-                      var participant = filteredParticipants[index];
+                                //dito start nung chat recent
 
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: GestureDetector(
-                          onTap: () {
-                            _showParticipantDialog(context, participant);
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  participant["image"]!,
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
+
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -364,16 +371,30 @@ class _chatState extends State<Chat> {
                                         fontSize: 16,
                                       ),
                                     ),
+                                    if (participant["name"] == "Christian Caparra")
+                                      const Text(
+                                        "Sige po sir Thankyou po",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: CupertinoColors.systemGrey,
+                                        ),
+                                      ),
                                   ],
                                 ),
-                              ),
-                            ],
+
+
+
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                        ],
+                      ),
+                    ),
+                  );
+
+
+
+                },
               ),
             ),
           ],
@@ -382,104 +403,48 @@ class _chatState extends State<Chat> {
     );
   }
 
-
-
-  // Info
-  void _showInfoDialog(BuildContext context) {
-    List<Map<String, String>> members = [
-      {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg"},
-      {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg"},
-      {"name": "John Lloyd Guevarra", "image": "images/JL.jpg"},
-      {"name": "Michael De Ramos", "image": "images/mike.jpg"},
-    ];
-
+  // Show Story Dialog
+  void _showStoryDialog(BuildContext context, String name, String imagePath) {
     showCupertinoDialog(
       context: context,
       builder: (context) {
-        return CupertinoAlertDialog(
-          title: const Text('Group Members', style: TextStyle(color: CupertinoColors.white)),
-          content: SizedBox(
-            height: 250,
-            child: SingleChildScrollView(
-              child: Column(
-                children: List.generate(members.length, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
-                    child: Row(
-                      children: [
-                        ClipOval(
-                          child: Image.asset(
-                            members[index]["image"]!,
-                            height: 50,
-                            width: 50,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          members[index]["name"]!,
-                          style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
+        return CupertinoPageScaffold(
+          backgroundColor: CupertinoColors.black,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-          ),
-          actions: [
-            CupertinoButton(
-              child: const Text('Close', style: TextStyle(color: CupertinoColors.destructiveRed)),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  // Show information dialog
-  void _showParticipantDialog(BuildContext context, Map<String, String> participant) {
-    showCupertinoDialog(
-      context: context,
-      builder: (context) {
-        return CupertinoAlertDialog(
-          title: Text(participant["name"]!, style: const TextStyle(color: CupertinoColors.white)),
-          content: SizedBox(
-            height: 150, // Adjust the height as needed
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end, // Align content to the bottom
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    participant["image"]!,
-                    height: 80,
-                    width: 80,
-                    fit: BoxFit.cover,
+              Positioned(
+                top: 35,
+                right: 20,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: CupertinoColors.black,
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: const Icon(
+                      CupertinoIcons.xmark,
+                      color: CupertinoColors.white,
+                      size: 24,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  "Email: ${participant["email"]}",
-                  style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
-                ),
-                Text(
-                  "Phone: ${participant["phone"]}",
-                  style: const TextStyle(fontSize: 14, color: CupertinoColors.white),
-                ),
-              ],
-            ),
+
+
+
+
+              ),
+            ],
           ),
-          actions: [
-            CupertinoButton(
-              child: const Text('Close', style: TextStyle(color: CupertinoColors.destructiveRed)),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
         );
       },
     );
@@ -488,69 +453,13 @@ class _chatState extends State<Chat> {
 
 // Data
 List<Map<String, String>> participants = [
-  {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg", "email": "caparrachristian47@gmail.com", "phone": "+639942060319"},
-  {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg", "email": "JhunielGalang@gmail.com", "phone": "+63123456789"},
-  {"name": "John Lloyd Guevarra", "image": "images/JL.jpg", "email": "johnlloydguevarra0405@gmail.com", "phone": "+639106284501"},
-  {"name": "Michael De Ramos", "image": "images/mike.jpg", "email": "deramosmichael27@gmail.com", "phone": "+639871654565"},
+  {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg"},
+  {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg"},
+  {"name": "John Lloyd Guevarra", "image": "images/JL.jpg"},
+  {"name": "Michael De Ramos", "image": "images/mike.jpg"},
+  {"name": "Samuel Miranda", "image": "images/JL.jpg"},
+
+
+
+
 ];
-
-
-void _showStoryDialog(BuildContext context, String name, String imagePath) {
-  showCupertinoDialog(
-    context: context,
-    builder: (context) {
-      return CupertinoPageScaffold(
-        backgroundColor: CupertinoColors.black,
-        child: Stack(
-          children: [
-            // Fullscreen Story Image
-            Positioned.fill(
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
-              ),
-            ),
-
-            // Name Overlay (Top-Left)
-            Positioned(
-              top: 40,
-              left: 20,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-
-
-              ),
-            ),
-
-            // Close Button (Top-Right)
-            Positioned(
-              top: 35,
-              right: 20,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: CupertinoColors.black,
-                  ),
-                  padding: const EdgeInsets.all(8),
-                  child: const Icon(
-                    CupertinoIcons.xmark,
-                    color: CupertinoColors.white,
-                    size: 24,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
-
-
-
