@@ -19,21 +19,25 @@ class ChristianChatPage extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            _buildProfileHeader(),
             Expanded(
               child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: Column(
-                    children: [
-                      _buildReceivedMessage("Goodmorning sir ask lang po", "images/ChristianCaparra.jpg", messageMaxWidth),
-                      _buildSentMessage("ano yun?", messageMaxWidth),
-                      _buildReceivedMessage("San po pwede bumili na dd4 na ram", "images/ChristianCaparra.jpg", messageMaxWidth),
-                      _buildSentMessage("Itech", messageMaxWidth),
-                      _buildSentMessage("Cyberzone", messageMaxWidth),
-                      _buildReceivedMessage("Sige po sir Thankyou po", "images/ChristianCaparra.jpg", messageMaxWidth),
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    _buildProfileHeader(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Column(
+                        children: [
+                          _buildReceivedMessage("Goodmorning sir ask lang po", "images/ChristianCaparra.jpg", messageMaxWidth),
+                          _buildSentMessage("ano yun?", messageMaxWidth),
+                          _buildReceivedMessage("San po pwede bumili na dd4 na ram", "images/ChristianCaparra.jpg", messageMaxWidth),
+                          _buildSentMessage("Itech", messageMaxWidth),
+                          _buildSentMessage("Cyberzone", messageMaxWidth),
+                          _buildReceivedMessage("Sige po sir Thankyou po", "images/ChristianCaparra.jpg", messageMaxWidth),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -45,39 +49,42 @@ class ChristianChatPage extends StatelessWidget {
   }
 
   Widget _buildProfileHeader() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.asset(
-              'images/ChristianCaparra.jpg',
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                'images/ChristianCaparra.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'Christian Caparra',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-          ),
-          const Text(
-            '@christian',
-            style: TextStyle(color: CupertinoColors.systemGrey),
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            '163 followers · 4 posts',
-            style: TextStyle(color: CupertinoColors.systemGrey2),
-          ),
-          const Text(
-            'You both follow Jhuniel and 3 others',
-            style: TextStyle(color: CupertinoColors.systemGrey2),
-          ),
-          const SizedBox(height: 8),
-        ],
+            const SizedBox(height: 8),
+            const Text(
+              'Christian Caparra',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+            const Text(
+              '@christian',
+              style: TextStyle(color: CupertinoColors.systemGrey),
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              '163 followers · 4 posts',
+              style: TextStyle(color: CupertinoColors.systemGrey2),
+            ),
+            const Text(
+              'You both follow Jhuniel and 3 others',
+              style: TextStyle(color: CupertinoColors.systemGrey2),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
       ),
     );
   }
