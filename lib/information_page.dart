@@ -30,8 +30,7 @@ class information_page extends StatelessWidget {
       "time": "12:40 PM"
     },
   ];
-//ito ba ok na?
-  //sbhn nyoko pag di ok para mabago ko
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
