@@ -75,7 +75,7 @@ class _chatState extends State<Chat> {
 
             //story tohh
 
-            Container(
+            SizedBox(
               height: 100,
               child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -98,8 +98,8 @@ class _chatState extends State<Chat> {
                                 child: ClipOval(
                                   child: Image.asset(
                                     "images/gfnisir.jpg",
-                                    height: 60,
-                                    width: 60,
+                                    height: 75,
+                                    width: 75,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -146,8 +146,8 @@ class _chatState extends State<Chat> {
                             child: ClipOval(
                               child: Image.asset(
                                 "images/ChristianCaparra.jpg",
-                                height: 60,
-                                width: 60,
+                                height: 75,
+                                width: 75,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -175,8 +175,8 @@ class _chatState extends State<Chat> {
                             child: ClipOval(
                               child: Image.asset(
                                 "images/Jhuniel.jpg",
-                                height: 60,
-                                width: 60,
+                                height: 75,
+                                width: 75,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -204,8 +204,8 @@ class _chatState extends State<Chat> {
                             child: ClipOval(
                               child: Image.asset(
                                 "images/JL.jpg",
-                                height: 60,
-                                width: 60,
+                                height: 75,
+                                width: 75,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -233,8 +233,8 @@ class _chatState extends State<Chat> {
                             child: ClipOval(
                               child: Image.asset(
                                 "images/mike.jpg",
-                                height: 60,
-                                width: 60,
+                                height: 75,
+                                width: 75,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -398,7 +398,7 @@ class _chatState extends State<Chat> {
       builder: (context) {
         return CupertinoAlertDialog(
           title: const Text('Group Members', style: TextStyle(color: CupertinoColors.white)),
-          content: Container(
+          content: SizedBox(
             height: 250,
             child: SingleChildScrollView(
               child: Column(
@@ -447,7 +447,7 @@ class _chatState extends State<Chat> {
       builder: (context) {
         return CupertinoAlertDialog(
           title: Text(participant["name"]!, style: const TextStyle(color: CupertinoColors.white)),
-          content: Container(
+          content: SizedBox(
             height: 150, // Adjust the height as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end, // Align content to the bottom

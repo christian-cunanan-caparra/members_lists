@@ -9,37 +9,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  final TextEditingController _searchController = TextEditingController();
-  List<Map<String, String>> filteredParticipants = List.from(participants);
-
-  @override
-  void initState() {
-    super.initState();
-    _searchController.addListener(_filterParticipants);
-  }
-
-  @override
-  void dispose() {
-    _searchController.removeListener(_filterParticipants);
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  void _filterParticipants() {
-    final query = _searchController.text.toLowerCase();
-    setState(() {
-      filteredParticipants = participants.where((participant) {
-        final name = participant["name"]!.toLowerCase();
-        return name.contains(query);
-      }).toList();
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
       navigationBar: CupertinoNavigationBar(
+        backgroundColor: CupertinoColors.black,
+        border: null,
         middle: const Text(
           "InstaTalk",
           style: TextStyle(fontWeight: FontWeight.bold, color: CupertinoColors.white),
@@ -51,7 +27,7 @@ class _HomepageState extends State<Homepage> {
               padding: EdgeInsets.zero,
               child: const Icon(CupertinoIcons.heart, size: 25, color: CupertinoColors.white),
               onPressed: () {
-                // Navigate to notifications
+                // Handle heart button press
               },
             ),
             CupertinoButton(
@@ -68,27 +44,30 @@ class _HomepageState extends State<Homepage> {
           ],
         ),
       ),
+
       child: SafeArea(
         child: Column(
           children: [
             // Stories Section
-            Container(
-              height: 100,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                children: [
-                  _buildStory("Your Story", "images/gfnisir.jpg", true),
-                  _buildStory("Christian", "images/ChristianCaparra.jpg"),
-                  _buildStory("Jhuniel", "images/Jhuniel.jpg"),
-                  _buildStory("John Lloyd", "images/JL.jpg"),
-                  _buildStory("Michael", "images/mike.jpg"),
-                  _buildStory("Samuel", "images/mike.jpg"),
-                ],
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0), // Adjust the value as needed
+              child: SizedBox(
+                height: 100,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  children: [
+                    _buildStory("Your Story", "images/gfnisir.jpg", true),
+                    _buildStory("Christian", "images/ChristianCaparra.jpg"),
+                    _buildStory("Jhuniel", "images/Jhuniel.jpg"),
+                    _buildStory("John Lloyd", "images/JL.jpg"),
+                    _buildStory("Michael", "images/mike.jpg"),
+                    _buildStory("Samuel", "images/mike.jpg"),
+                  ],
+                ),
               ),
             ),
-
-            // Posts Section
+            // Post Section
             Expanded(
               child: ListView(
                 children: [
@@ -123,8 +102,8 @@ class _HomepageState extends State<Homepage> {
                   child: ClipOval(
                     child: Image.asset(
                       imagePath,
-                      height: 60,
-                      width: 60,
+                      height: 75,
+                      width: 75,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -183,7 +162,7 @@ class _HomepageState extends State<Homepage> {
             ],
           ),
         ),
-        Container(
+        SizedBox(
           height: 400,
           child: Image.asset(
             postImage,
@@ -283,27 +262,3 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
-
-class MessagesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text("Messages"),
-      ),
-      child: Center(
-        child: Text(
-          "Messages Page",
-          style: TextStyle(color: CupertinoColors.white),
-        ),
-      ),
-    );
-  }
-}
-
-List<Map<String, String>> participants = [
-  {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg", "email": "caparrachristian47@gmail.com", "phone": "+639942060319"},
-  {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg", "email": "JhunielGalang@gmail.com", "phone": "+63123456789"},
-  {"name": "John Lloyd Guevarra", "image": "images/JL.jpg", "email": "johnlloydguevarra0405@gmail.com", "phone": "+639106284501"},
-  {"name": "Michael De Ramos", "image": "images/mike.jpg", "email": "deramosmichael27@gmail.com", "phone": "+639871654565"},
-];
