@@ -400,7 +400,14 @@ class _ChatState extends State<Chat> {
                                           color: CupertinoColors.systemGrey,
                                         ),
                                       ),
-
+                                    if (participant["name"] == "Michael De Ramos")
+                                      const Text(
+                                        "Sige po sir thank you po",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: CupertinoColors.systemGrey,
+                                        ),
+                                      ),
                                     //dito mag add ng if
 
 
