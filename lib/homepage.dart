@@ -60,7 +60,7 @@ class _HomepageState extends State<Homepage> {
                     _buildStory("Your Story", "images/gfnisir.jpg", true),
                     _buildStory("Christian", "images/ChristianCaparra.jpg"),
                     _buildStory("Jhuniel", "images/Jhuniel.jpg"),
-                    _buildStory("John Lloyd", "images/JL.jpg"),
+                    _buildStory("John Lloyd", "images/Jl1.jpg"),
                     _buildStory("Michael", "images/mike.jpg"),
                     _buildStory("Samuel", "images/mike.jpg"),
 
@@ -215,7 +215,7 @@ class _HomepageState extends State<Homepage> {
     final storyImages = {
       "Christian": "images/ChristianCaparra.jpg",
       "Jhuniel": "images/Jhuniel.jpg",
-      "John Lloyd": "images/JL.jpg",
+      "John Lloyd": "images/jl2.jpg",
       "Michael": "images/mike.jpg",
       "Samuel": "images/mike.jpg",
       "Your Story": "images/gfnisir.jpg",
