@@ -7,7 +7,7 @@ class group_chat extends StatelessWidget {
   final List<Map<String, String>> messages = const [
     {"name": "Christian Caparra", "message": "Shatawt sa mga kabataan jan", "image": "images/ChristianCaparra.jpg", "time": "12:30 PM"},
     {"name": "Michael De Ramos", "message": "Ma ano Ulam!!", "image": "images/mike.jpg", "time": "12:32 PM"},
-    {"name": "John Lloyd Guevarra", "message": "Code code din di puro tulog", "image": "images/JL.jpg", "time": "12:35 PM"},
+    {"name": "John Lloyd Guevarra", "message": "Code code din di puro tulog", "image": "images/JL2.jpg", "time": "12:35 PM"},
     {"name": "Jhuniel Galang", "message": "Ay payag kayo non?", "image": "images/Jhuniel.jpg", "time": "12:37 PM"},
   ];
 
