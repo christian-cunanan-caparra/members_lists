@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
+import 'jl_chat_page.dart';
 import 'christian_chat_page.dart';
 import 'jhuniel_chat_page.dart';
 
@@ -328,12 +328,16 @@ class _ChatState extends State<Chat> {
                               builder: (context) => const JhunielChatPage()),
                         );
 
-
-                        //dito nyo add sainyo gamit kayo else if
-
-                        //
-                        //
                       }
+                      else if (participant["name"] == "John Lloyd Guevarra") {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const JlChatPage()),
+                        );
+
+                      }
+                      //dito kayo mag add ng else if
 
 
 
