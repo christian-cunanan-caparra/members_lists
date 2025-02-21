@@ -328,11 +328,12 @@ class _ChatState extends State<Chat> {
                               builder: (context) => const JhunielChatPage()),
                         );
 
+
                         //dito nyo add sainyo gamit kayo else if
 
                         //
+                        //
                       }
-
 
 
 
