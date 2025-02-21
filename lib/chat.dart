@@ -330,7 +330,7 @@ class _ChatState extends State<Chat> {
 
                         //dito nyo add sainyo gamit kayo else if
 
-
+                        //
                       }
 
 
