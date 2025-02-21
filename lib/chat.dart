@@ -392,6 +392,18 @@ class _ChatState extends State<Chat> {
                                           color: CupertinoColors.systemGrey,
                                         ),
                                       ),
+                                    if (participant["name"] == "John Lloyd Guevarra")
+                                      const Text(
+                                        "Sige po sir thank you po, WHAHAHA",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: CupertinoColors.systemGrey,
+                                        ),
+                                      ),
+
+                                    //dito mag add ng if
+
+
                                   ],
                                 ),
 
