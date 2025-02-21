@@ -60,7 +60,7 @@ class _HomepageState extends State<Homepage> {
                     _buildStory("Your Story", "images/gfnisir.jpg", true),
                     _buildStory("Christian", "images/ChristianCaparra.jpg"),
                     _buildStory("Jhuniel", "images/Jhuniel.jpg"),
-                    _buildStory("John Lloyd", "images/JL.jpg"),
+                    _buildStory("John Lloyd", "images/Jl1.jpg"),
                     _buildStory("Michael", "images/mike.jpg"),
                     _buildStory("Samuel", "images/mike.jpg"),
 
@@ -73,7 +73,8 @@ class _HomepageState extends State<Homepage> {
               child: ListView(
                 children: [
                   _buildPost("Christian Caparra", "images/ChristianCaparra.jpg", "images/ChristianCaparra.jpg", "9,234 likes", "stress napo"),
-                  _buildPost("John Lloyd Guevarra", "images/JL.jpg", "images/JL.jpg", "2,345 likes", "hello tara kain!"),
+                  _buildPost("John Lloyd Guevarra", "images/JL1.jpg", "images/jl3.jpg", "2,345 likes", "0.5 muna bago 5.0"),
+                  _buildPost("John Lloyd Guevarra", "images/JL1.jpg", "images/jl4.jpg", "9,345 likes", "with mga idols ❤️"),
                   _buildPost("Michael De Ramos", "images/mike.jpg", "images/mike.jpg", "3,456 likes", "kaya pa!"),
                   _buildPost("Jhuniel Galang", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,567 likes", "wag na ayaw kona!"),
                   _buildPost("Samuel Miranda", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,827 likes", "hello!"),
@@ -214,7 +215,7 @@ class _HomepageState extends State<Homepage> {
     final storyImages = {
       "Christian": "images/ChristianCaparra.jpg",
       "Jhuniel": "images/Jhuniel.jpg",
-      "John Lloyd": "images/JL.jpg",
+      "John Lloyd": "images/jl2.jpg",
       "Michael": "images/mike.jpg",
       "Samuel": "images/mike.jpg",
       "Your Story": "images/gfnisir.jpg",
