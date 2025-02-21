@@ -63,6 +63,7 @@ class _HomepageState extends State<Homepage> {
                     _buildStory("John Lloyd", "images/Jl1.jpg"),
                     _buildStory("Michael", "images/mike.jpg"),
                     _buildStory("Samuel", "images/mike.jpg"),
+                    //
 
                   ],
                 ),
@@ -216,11 +217,11 @@ class _HomepageState extends State<Homepage> {
       "Christian": "images/ChristianCaparra.jpg",
       "Jhuniel": "images/Jhuniel.jpg",
       "John Lloyd": "images/jl2.jpg",
-      "Michael": "images/mike.jpg",
+      "Michael": "images/mike1.jpg",
       "Samuel": "images/mike.jpg",
       "Your Story": "images/gfnisir.jpg",
     };
-
+//
     final storyImage = storyImages[name] ?? "images/default_story.jpg";
 
     showCupertinoDialog(
