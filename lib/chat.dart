@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'jl_chat_page.dart';
 
 import 'christian_chat_page.dart';
 import 'jhuniel_chat_page.dart';
@@ -266,7 +265,7 @@ class _ChatState extends State<Chat> {
 
 
                   GestureDetector(
-                    onTap: () => _showStoryDialog(context, "Samuel Miranda", "images/mike.jpg"),
+                    onTap: () => _showStoryDialog(context, "Samuel Miranda", "images/JL.jpg"),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -278,7 +277,7 @@ class _ChatState extends State<Chat> {
                             ),
                             child: ClipOval(
                               child: Image.asset(
-                                "images/mike.jpg",
+                                "images/JL.jpg",
                                 height: 75,
                                 width: 75,
                                 fit: BoxFit.cover,
@@ -330,19 +329,11 @@ class _ChatState extends State<Chat> {
                         );
 
 
+                        //dito nyo add sainyo gamit kayo else if
+
+                        //
+                        //
                       }
-                      else if (participant["name"] == "John Lloyd Guevarra") {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => const JlChatPage()),
-                        );
-
-
-
-
-                      } //dito nyo add sainyo gamit kayo else if
-
 
 
 
@@ -391,7 +382,6 @@ class _ChatState extends State<Chat> {
                                       ),
                                   ],
                                 ),
-
 
 
 
@@ -466,9 +456,9 @@ class _ChatState extends State<Chat> {
 List<Map<String, String>> participants = [
   {"name": "Christian Caparra", "image": "images/ChristianCaparra.jpg"},
   {"name": "Jhuniel Galang", "image": "images/Jhuniel.jpg"},
-  {"name": "John Lloyd Guevarra", "image": "images/JL1.jpg"},
+  {"name": "John Lloyd Guevarra", "image": "images/JL.jpg"},
   {"name": "Michael De Ramos", "image": "images/mike.jpg"},
-  {"name": "Samuel Miranda", "image": "images/mike.jpg"},
+  {"name": "Samuel Miranda", "image": "images/JL.jpg"},
 
 
 
