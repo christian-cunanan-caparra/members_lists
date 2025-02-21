@@ -64,6 +64,7 @@ class _HomepageState extends State<Homepage> {
                     _buildStory("Michael", "images/mike.jpg"),
                     _buildStory("Samuel", "images/mike.jpg"),
                     //
+                    //
 
                   ],
                 ),
