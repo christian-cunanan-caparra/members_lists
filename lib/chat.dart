@@ -412,7 +412,7 @@ class _ChatState extends State<Chat> {
                                         ),
                                       ),
 
-                                    //dito mag add ng if
+                                    //dito mag add njbjbg if
 
 
                                   ],
