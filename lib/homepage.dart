@@ -76,7 +76,7 @@ class _HomepageState extends State<Homepage> {
                   _buildPost("Christian Caparra", "images/ChristianCaparra.jpg", "images/ChristianCaparra.jpg", "9,234 likes", "stress napo"),
                   _buildPost("John Lloyd Guevarra", "images/JL1.jpg", "images/jl3.jpg", "2,345 likes", "0.5 muna bago 5.0"),
                   _buildPost("John Lloyd Guevarra", "images/JL1.jpg", "images/jl4.jpg", "9,345 likes", "with mga idols 🔥"),
-                  _buildPost("Michael De Ramos", "images/mike.jpg", "images/mike.jpg", "3,456 likes", "kaya pa!"),
+                  _buildPost("Michael De Ramos", "images/mike.jpg", "images/kape.jpg", "3,456 likes", "kape pa!"),
                   _buildPost("Jhuniel Galang", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,567 likes", "wag na ayaw kona!"),
                   _buildPost("Samuel Miranda", "images/Jhuniel.jpg", "images/Jhuniel.jpg", "4,827 likes", "hello!"),
                 ],
