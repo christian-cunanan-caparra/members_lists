@@ -20,7 +20,7 @@ class information_page extends StatelessWidget {
     {
       "name": "John Lloyd Guevarra",
       "message": "Address: San Luis Pampanga\nPhone: +639106284501\njohnlloydguevarra0405@gmail.com",
-      "image": "images/JL.jpg",
+      "image": "images/JL2.jpg",
       "time": "12:35 PM"
     },
     {

@@ -192,7 +192,7 @@ class _ChatState extends State<Chat> {
 
 
                   GestureDetector(
-                    onTap: () => _showStoryDialog(context, "John Lloyd", "images/JL.jpg"),
+                    onTap: () => _showStoryDialog(context, "John Lloyd", "images/jl2.jpg"),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
@@ -204,7 +204,7 @@ class _ChatState extends State<Chat> {
                             ),
                             child: ClipOval(
                               child: Image.asset(
-                                "images/JL.jpg",
+                                "images/JL1.jpg",
                                 height: 75,
                                 width: 75,
                                 fit: BoxFit.cover,
