@@ -33,7 +33,7 @@ class JlChatPage extends StatelessWidget {
                           _buildReceivedMessage("Legit sir? WHAHAHA", "images/JL1.jpg", messageMaxWidth),
                           _buildSentMessage("Joke", messageMaxWidth),
                           _buildSentMessage("5.0 grade mo", messageMaxWidth),
-                          _buildReceivedMessage("Sige po sir thank you po, WHAHAHHA", "images/JL1.jpg", messageMaxWidth),
+                          _buildReceivedMessage("Sige po sir thank you po, WHAHAHA", "images/JL1.jpg", messageMaxWidth),
                         ],
                       ),
                     ),
